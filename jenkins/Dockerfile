@@ -31,10 +31,6 @@ COPY config/hudson.tasks.Maven.xml /usr/share/jenkins/ref/hudson.tasks.Maven.xml
 COPY config/hudson.plugins.groovy.Groovy.xml /usr/share/jenkins/ref/hudson.plugins.groovy.Groovy.xml
 COPY config/maven-global-settings-files.xml /usr/share/jenkins/ref/maven-global-settings-files.xml
 
-# SSH Keys & Credentials
-COPY config/ssh-keys/cd-demo /usr/share/jenkins/ref/.ssh/id_rsa
-COPY config/ssh-keys/cd-demo.pub /usr/share/jenkins/ref/.ssh/id_rsa.pub
-
 # tell Jenkins that no banner prompt for pipeline plugins is needed
 # see: https://github.com/jenkinsci/docker#preinstalling-plugins
 RUN echo 2.0 > /usr/share/jenkins/ref/jenkins.install.UpgradeWizard.state
