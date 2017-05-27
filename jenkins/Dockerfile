@@ -1,10 +1,16 @@
 FROM jenkins:2.46.2
 
 USER root
+
+ENV BASE_APKS="sudo curl git maven"
+
 RUN apt-get update \
-      && apt-get install -y sudo curl\
+      && apt-get install -y $BASE_APKS\
       && rm -rf /var/lib/apt/lists/*
 RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
+
+RUN curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
+RUN apt-get install -y nodejs
 
 # getting the docker-cli
 # --- Attention: docker.sock needs to be mounted as volume in docker-compose.yml
